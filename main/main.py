@@ -4,7 +4,7 @@ from AVLTree import AVLTree
 
 def main():
     # Pfad zur Test-CSV-Datei
-    test_csv_file = "/Users/karahankrc/Downloads/StudentTask/1_gram.csv"
+    test_csv_file = "F:/Backup/Kawa/TH-Koeln/Algo/Praktikum/Aufgabe 1/1_gram.csv"
 
     # Erstellt Instanz mit der CSV Datei
     autocomplete_ngrams = AutocompleteNgrams(test_csv_file)
@@ -21,8 +21,6 @@ def main():
     # print(f"Vorschläge für '{input_string}': {suggestions}")
     # print(f"Anzahl untersuchter Nodes: {searched_nodes}")
     # print("AVL Tree:")
-    # autocomplete_ngrams.AVLTree.print_tree();
-
 
 if __name__ == "__main__":
     main()

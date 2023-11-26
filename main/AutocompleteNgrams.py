@@ -42,8 +42,8 @@ class AutocompleteNgrams:
                 falls es nicht gefunden werden konnte wird None zurückgegeben.
         """
         # TODO: ERLEDIGT
-        frequency = self.constant_time_structure.get(ngram)
-        # frequency = self.logarithmic_time_structure.get(ngram)
+        # frequency = self.constant_time_structure.get(ngram)
+        frequency = self.logarithmic_time_structure.get(ngram)
         return frequency
 
     def get_k_possible_suggestions(self, input_string: str, k: int):

@@ -100,7 +100,7 @@ class AVLTree:
     def _print_tree(self, cur_node):
         if cur_node is not None:
             self._print_tree(cur_node.left_child)
-            print('%s, h=%d' % (str(cur_node.key), cur_node.height))
+            print('%s, h=%d, %s' % (str(cur_node.key), cur_node.height, cur_node.values))
             self._print_tree(cur_node.right_child)
 
     def height(self):
