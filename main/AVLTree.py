@@ -44,7 +44,7 @@ class AVLTree:
 
                 if n.right_child is not None:
                     next_nodes.append(n.right_child)
-                    next_row += '\ ' + sep
+                    next_row += '\\ ' + sep
                 else:
                     next_row += '  ' + sep
                     next_nodes.append(None)
@@ -137,10 +137,26 @@ class AVLTree:
                  Anzahl der untersuchten Nodes.
 
         """
-        # TODO: Implementiere diese Methode
-        ngrams_dict = None
-        searched_nodes = None
+        ngrams_dict = {}
+        searched_nodes = 0
 
+        def search_recursive(cur_node):
+            nonlocal searched_nodes
+            if cur_node is None:
+                return
+
+            # Wenn der Schlüssel des aktuellen Knotens mit dem Wort beginnt, fügen Sie ihn zum Ergebnis hinzu
+            if cur_node.key.startswith(word):
+                ngrams_dict[cur_node.key] = cur_node.values[0]  # Nehmen Sie an, dass values[0] die Frequenz ist
+                searched_nodes += 1
+
+            # Rekursive Suche in linkem und rechtem Teilbaum
+            if word < cur_node.key:
+                search_recursive(cur_node.left_child)
+            else:
+                search_recursive(cur_node.right_child)
+
+        search_recursive(self.root)
         return ngrams_dict, searched_nodes
 
     def delete_key(self, key):

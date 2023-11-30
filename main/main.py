@@ -17,10 +17,9 @@ def main():
     # get-k-possible-suggestion mit wa als Beispiel (Logarithmische Laufzeit)
     input_string = "wa"
     k = 3
-    # suggestions, searched_nodes = autocomplete_ngrams.get_k_possible_suggestions(input_string, k)
-    # print(f"Vorschläge für '{input_string}': {suggestions}")
-    # print(f"Anzahl untersuchter Nodes: {searched_nodes}")
-    # print("AVL Tree:")
+    suggestions, searched_nodes = autocomplete_ngrams.get_k_possible_suggestions(input_string, k)
+    print(f"Vorschläge für '{input_string}': {suggestions}")
+    print(f"Anzahl untersuchter Nodes: {searched_nodes}")
 
 if __name__ == "__main__":
     main()

@@ -53,9 +53,11 @@ class AutocompleteNgrams:
         :return: Eine Liste mit den k Vorschlägen,
                 die Anzahl untersuchter Nodes im AVL Baum.
         """
-        # TODO: Implementieren Sie diese Methode
-        suggestions = None
-        searched_nodes = None
+        ngrams_dict, searched_nodes = self.logarithmic_time_structure.get_k_possible_suggestions(input_string, k)
+
+        # Sortieren der N-Gramme nach Frequenz und Begrenzung auf k Vorschläge
+        sorted_suggestions = sorted(ngrams_dict.items(), key=lambda item: item[1], reverse=True)[:k]
+        suggestions = [suggestion[0] for suggestion in sorted_suggestions]
 
         return suggestions, searched_nodes
 
