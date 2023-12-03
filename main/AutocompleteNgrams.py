@@ -1,5 +1,4 @@
 import csv
-from AVLTree import AVLTree
 from ConstantDatastructure import ConstantDatastructure
 from LogarithmicDatastructure import LogarithmicDatastructure
 
@@ -10,6 +9,7 @@ class AutocompleteNgrams:
         """ Initialisiert AutocompleteNgrams
         :param filename: Der Dateipfad zum csv file
         """
+        # NIKLAS
         self.logarithmic_time_structure = LogarithmicDatastructure()
         self.constant_time_structure = ConstantDatastructure()
         self.read_csv_file(filename)
@@ -23,6 +23,7 @@ class AutocompleteNgrams:
         with open(filename, mode='r') as file:
             csv_reader = csv.reader(file)
 
+            # NIKLAS
             for row in csv_reader:
                 # Stellen Sie sicher, dass die Zeile mindestens ein Element hat
                 if row:
@@ -35,6 +36,7 @@ class AutocompleteNgrams:
                     print(f"Zeile enthält keine Werte: {row}")
 
 
+    # KARAHAN
     def get(self, ngram: str):
         """
         :param ngram: Das N-gram, welches gefunden werden soll.
@@ -42,10 +44,11 @@ class AutocompleteNgrams:
                 falls es nicht gefunden werden konnte wird None zurückgegeben.
         """
         # TODO: ERLEDIGT
-        # frequency = self.constant_time_structure.get(ngram)
-        frequency = self.logarithmic_time_structure.get(ngram)
+        frequency = self.constant_time_structure.get(ngram)
+        # frequency = self.logarithmic_time_structure.get(ngram)
         return frequency
 
+    # KAWA
     def get_k_possible_suggestions(self, input_string: str, k: int):
         """
         :param input_string: Der String für den Fortsetzungen vorgeschlagen werden.
@@ -60,4 +63,3 @@ class AutocompleteNgrams:
         suggestions = [suggestion[0] for suggestion in sorted_suggestions]
 
         return suggestions, searched_nodes
-

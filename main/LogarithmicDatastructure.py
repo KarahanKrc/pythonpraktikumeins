@@ -1,5 +1,7 @@
 from AVLTree import AVLTree
 
+# SARAH
+
 class LogarithmicDatastructure:
     def __init__(self):
         self.avl_tree = AVLTree()  # AVL-Baumimplementierung oder eine andere balancierte Suchbaumstruktur
