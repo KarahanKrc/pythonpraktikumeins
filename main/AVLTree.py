@@ -129,7 +129,6 @@ class AVLTree:
         elif key > cur_node.key and cur_node.right_child is not None:
             return self._find(key, cur_node.right_child)
 
-    # Kawa
     def find_most_likely_ngrams(self, word: str):
         """ Findet mögliche Fortsetzungen für 'word' im AVL Baum.
 
@@ -146,16 +145,21 @@ class AVLTree:
             if cur_node is None:
                 return
 
-            # Wenn der Schlüssel des aktuellen Knotens mit dem Wort beginnt, fügen Sie ihn zum Ergebnis hinzu
-            if cur_node.key.startswith(word):
-                ngrams_dict[cur_node.key] = cur_node.values[0]  # Nehmen Sie an, dass values[0] die Frequenz ist
-                searched_nodes += 1
+            searched_nodes += 1
 
-            # Rekursive Suche in linkem und rechtem Teilbaum
-            if word < cur_node.key:
-                search_recursive(cur_node.left_child)
+            # Knoten hinzufügen zum Dict.
+            if cur_node.key.startswith(word):
+                ngrams_dict[cur_node.key] = int(cur_node.values[0])  # Frequenz
+                if cur_node.left_child is not None:
+                    search_recursive(cur_node.left_child)
+                if cur_node.right_child is not None:
+                    search_recursive(cur_node.right_child)
             else:
-                search_recursive(cur_node.right_child)
+                # Rekursive Suche in linkem und rechtem Teilbaum
+                if word <= cur_node.key:
+                    search_recursive(cur_node.left_child)
+                if word >= cur_node.key:
+                    search_recursive(cur_node.right_child)
 
         search_recursive(self.root)
         return ngrams_dict, searched_nodes
